@@ -39,7 +39,77 @@ class Program
 
         bool result = IsArrayContains(arr1, arr2);
 
-        Console.WriteLine(result); 
+        Console.WriteLine(result);
+
+
+
+
+
+
+
+
+
+
+
+        User[] users = new User[]
+      {
+            new Student
+            {
+                Username = "student1",
+                Password = "pass1",
+                FirstName = "John",
+                LastName = "Doe",
+                Grade = 95
+            },
+            new User
+            {
+                Username = "user1",
+                Password = "pass2"
+            }
+      };
+
+        Console.Write("Istifadecinin adini daxil edin: ");
+        string inputUsername = Console.ReadLine();
+        Console.Write("Parolu daxil edin: ");
+        string inputPassword = Console.ReadLine();
+
+        User foundUser = null;
+        foreach (User user in users)
+        {
+            if (user.Username == inputUsername && user.Password == inputPassword)
+            {
+                foundUser = user;
+                break;
+            }
+        }
+
+        if (foundUser is Student student)
+        {
+            Console.WriteLine($"Salam, {student.FirstName} {student.LastName}! Sizin qiymetiniz: {student.Grade}");
+        }
+        else if (foundUser != null)
+        {
+            Console.WriteLine("Siz adi istifadeci kimi daxil oldunuz.");
+        }
+        else
+        {
+            Console.WriteLine("Bu adla istifadeci adi ve parol tapilmadi.");
+
+        }
+    }
+
+
+    class User
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
+
+    class Student : User
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Grade { get; set; }
     }
 }
 
